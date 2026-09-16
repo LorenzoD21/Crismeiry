@@ -65,6 +65,9 @@ export const StoryView: React.FC<StoryViewProps> = ({
   const progressIntervalRef = useRef<number | null>(null);
   const activePhoto = photos[currentIndex] || photos[0];
 
+  const nextSlideRef = useRef<() => void>(() => {});
+  const prevSlideRef = useRef<() => void>(() => {});
+
   // Advance to next photo
   const nextSlide = useCallback(() => {
     setSlideProgress(0);
@@ -90,29 +93,50 @@ export const StoryView: React.FC<StoryViewProps> = ({
     }
   }, [currentIndex, photos.length, onIndexChange]);
 
+  // Keep refs synchronized with latest callbacks
+  useEffect(() => {
+    nextSlideRef.current = nextSlide;
+    prevSlideRef.current = prevSlide;
+  }, [nextSlide, prevSlide]);
+
+  // Reset slide progress whenever the current index changes
+  useEffect(() => {
+    setSlideProgress(0);
+  }, [currentIndex]);
+
   // Progress timer loop
   useEffect(() => {
     if (isPaused || isHolding || showVerseModal) return;
 
     const stepMs = 50;
     const increment = (stepMs / slideDuration) * 100;
+    let isTransitioning = false;
 
     progressIntervalRef.current = window.setInterval(() => {
+      if (isTransitioning) return;
+
       setSlideProgress((prev) => {
-        if (prev >= 100) {
-          nextSlide();
-          return 0;
+        const next = prev + increment;
+        if (next >= 100) {
+          isTransitioning = true;
+          // Defer call so it executes outside React's state updater phase
+          window.setTimeout(() => {
+            nextSlideRef.current();
+            isTransitioning = false;
+          }, 0);
+          return 100;
         }
-        return prev + increment;
+        return next;
       });
     }, stepMs);
 
     return () => {
       if (progressIntervalRef.current !== null) {
         clearInterval(progressIntervalRef.current);
+        progressIntervalRef.current = null;
       }
     };
-  }, [isPaused, isHolding, showVerseModal, slideDuration, nextSlide]);
+  }, [isPaused, isHolding, showVerseModal, slideDuration, currentIndex]);
 
   // Keyboard navigation
   useEffect(() => {
