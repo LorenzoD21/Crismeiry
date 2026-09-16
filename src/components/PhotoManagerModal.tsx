@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { PhotoItem } from '../types';
 import { sliceCollageImage } from '../utils/collageSlicer';
+import { getPhotoUrl } from '../utils/photoUtils';
 
 interface PhotoManagerModalProps {
   isOpen: boolean;
@@ -194,7 +195,7 @@ export const PhotoManagerModal: React.FC<PhotoManagerModalProps> = ({
                   title={`Cambiar foto #${p.id}`}
                 >
                   <img
-                    src={p.customSrc || p.defaultSrc}
+                    src={getPhotoUrl(p)}
                     alt={p.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                     referrerPolicy="no-referrer"

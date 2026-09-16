@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { PhotoItem, VisualEffect } from '../types';
 import confetti from 'canvas-confetti';
+import { getPhotoUrl } from '../utils/photoUtils';
 
 interface StoryViewProps {
   photos: PhotoItem[];
@@ -299,12 +300,12 @@ export const StoryView: React.FC<StoryViewProps> = ({
             {/* Ambient Blurred Background (Matches exact photo colors for seamless phone display) */}
             <div 
               className="absolute inset-0 bg-cover bg-center filter blur-2xl scale-125 opacity-70 transition-opacity"
-              style={{ backgroundImage: `url(${activePhoto.customSrc || activePhoto.defaultSrc})` }}
+              style={{ backgroundImage: `url(${getPhotoUrl(activePhoto)})` }}
             />
 
             {/* Foreground Photo (Cover vs Fit) */}
             <img
-              src={activePhoto.customSrc || activePhoto.defaultSrc}
+              src={getPhotoUrl(activePhoto)}
               alt={activePhoto.title}
               className={`relative z-10 w-full h-full ${
                 displayMode === 'cover'
@@ -399,7 +400,7 @@ export const StoryView: React.FC<StoryViewProps> = ({
             <div className="relative">
               <div className="w-9 h-9 rounded-full ring-2 ring-pink-500 overflow-hidden bg-zinc-800 shadow-md">
                 <img
-                  src={photos[19]?.customSrc || photos[19]?.defaultSrc}
+                  src={getPhotoUrl(photos[19])}
                   alt="Crismeiri avatar"
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
@@ -575,7 +576,7 @@ export const StoryView: React.FC<StoryViewProps> = ({
           title="Sonido original • Toque para música"
         >
           <img
-            src={photos[19]?.customSrc || photos[19]?.defaultSrc}
+            src={getPhotoUrl(photos[19])}
             alt="disc"
             className="w-full h-full rounded-full object-cover"
             referrerPolicy="no-referrer"

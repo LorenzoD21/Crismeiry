@@ -9,7 +9,7 @@ export const INITIAL_PHOTOS: PhotoItem[] = [
     ageBadge: "Inicios",
     quote: "Hay personas que nacen con una luz propia que nunca se apaga.",
     storyText: "Desde bien chiquita, con esa sonrisita pícara y esos ojitos brillantes, ya contagiabas una alegría única a quienes te rodeaban. Crismeiri, tu ternura siempre ha sido tu mayor tesoro.",
-    defaultSrc: "/photos/1.jpeg",
+    defaultSrc: "./photos/1.jpeg",
     accentColor: "#ec4899",
     bibleVerse: {
       reference: "Salmos 139:14",
@@ -25,7 +25,7 @@ export const INITIAL_PHOTOS: PhotoItem[] = [
     ageBadge: "Primeros Pasos",
     quote: "La infancia es el tesoro donde guardamos nuestros recuerdos más puros.",
     storyText: "Con tus trencitas bien puestas y la inocencia a flor de piel. Cada día era una nueva aventura, descubriendo el mundo con esa mirada despierta y llena de sueños por cumplir.",
-    defaultSrc: "/photos/2.jpeg",
+    defaultSrc: "./photos/2.jpeg",
     accentColor: "#3b82f6",
     bibleVerse: {
       reference: "Proverbios 4:18",
@@ -41,7 +41,7 @@ export const INITIAL_PHOTOS: PhotoItem[] = [
     ageBadge: "Momentos Mágicos",
     quote: "Reír con el corazón es la forma más linda de celebrar la vida.",
     storyText: "Esa carcajada espontánea mirando hacia el cielo, con tu vestidito blanco de ensueño. Tu felicidad siempre ha sido genuina, llenando de paz cualquier rincón.",
-    defaultSrc: "/photos/3.jpeg",
+    defaultSrc: "./photos/3.jpeg",
     accentColor: "#a855f7",
     bibleVerse: {
       reference: "Sofonías 3:17",
@@ -57,7 +57,7 @@ export const INITIAL_PHOTOS: PhotoItem[] = [
     ageBadge: "Ternura",
     quote: "No se trata de la ropa, sino de la dulzura con la que brillas.",
     storyText: "Mirando por encima del hombro con tu falda de lunares, ya tenías esa chispa natural de modelo. Siempre auténtica, dulce y con una gracia encantadora.",
-    defaultSrc: "/photos/4.jpeg",
+    defaultSrc: "./photos/4.jpeg",
     accentColor: "#f43f5e",
     bibleVerse: {
       reference: "Proverbios 31:25",
@@ -73,7 +73,7 @@ export const INITIAL_PHOTOS: PhotoItem[] = [
     ageBadge: "Espontánea",
     quote: "En la mirada de una niña habita la magia de lo sincero.",
     storyText: "El pelo sobre la carita y una sonrisa que derretía a cualquiera. No hacían falta poses ni filtros; tu belleza siempre ha sido fresca, pura y natural.",
-    defaultSrc: "/photos/5.jpeg",
+    defaultSrc: "./photos/5.jpeg",
     accentColor: "#eab308",
     bibleVerse: {
       reference: "1 Pedro 3:4",
@@ -89,7 +89,7 @@ export const INITIAL_PHOTOS: PhotoItem[] = [
     ageBadge: "Princesa",
     quote: "Cada paso que das te va convirtiendo en la reina que hoy eres.",
     storyText: "Con tu diadema fucsia y tu vestidito azul elegante. Ya se notaba la princesa en la que te estabas convirtiendo, con ese corazón noble y bondadoso.",
-    defaultSrc: "/photos/6.jpeg",
+    defaultSrc: "./photos/6.jpeg",
     accentColor: "#6366f1",
     bibleVerse: {
       reference: "1 Juan 3:1",
@@ -105,7 +105,7 @@ export const INITIAL_PHOTOS: PhotoItem[] = [
     ageBadge: "Creciendo",
     quote: "La serenidad es el adorno más fino del alma.",
     storyText: "Vestida de blanco impecable, reflejando toda la paz y la gentileza que te caracterizan. Una señorita que empezaba a florecer con porte y timidez encantadora.",
-    defaultSrc: "/photos/7.jpeg",
+    defaultSrc: "./photos/7.jpeg",
     accentColor: "#06b6d4",
     bibleVerse: {
       reference: "Salmos 46:5",
@@ -121,7 +121,7 @@ export const INITIAL_PHOTOS: PhotoItem[] = [
     ageBadge: "En Conexión",
     quote: "Florestas verdes para una flor que apenas comenzaba a abrir sus pétalos.",
     storyText: "Entre las hojas y la brisa, tu sonrisa tímida se fundía con el verde de la vida. Una foto que guarda esa calma tan bonita que siempre transmites.",
-    defaultSrc: "/photos/8.jpeg",
+    defaultSrc: "./photos/8.jpeg",
     accentColor: "#10b981",
     bibleVerse: {
       reference: "Eclesiastés 3:11",
@@ -137,7 +137,7 @@ export const INITIAL_PHOTOS: PhotoItem[] = [
     ageBadge: "Alegría",
     quote: "Una sonrisa tuya es capaz de transformar cualquier día gris en un festival de color.",
     storyText: "Con tu top fucsia radiante y esa pose con la mano en la cintura. Tu personalidad vibrante ya marcaba su presencia en cada reunión familiar.",
-    defaultSrc: "/photos/9.jpeg",
+    defaultSrc: "./photos/9.jpeg",
     accentColor: "#d946ef",
     bibleVerse: {
       reference: "Nehemías 8:10",
@@ -153,7 +153,7 @@ export const INITIAL_PHOTOS: PhotoItem[] = [
     ageBadge: "Aventurera",
     quote: "Naciste para conquistar caminos y llegar tan lejos como tus metas te guíen.",
     storyText: "¡Al volante de tu jeep rosado! Lista para recorrer el mundo con tus amigos. Desde pequeña decidida, valiente y sin miedo a disfrutar el viaje.",
-    defaultSrc: "/photos/10.jpeg",
+    defaultSrc: "./photos/10.jpeg",
     accentColor: "#f97316",
     bibleVerse: {
       reference: "Josué 1:9",
@@ -169,7 +169,7 @@ export const INITIAL_PHOTOS: PhotoItem[] = [
     ageBadge: "Navidad",
     quote: "El mejor regalo no está bajo el árbol, sino en las personas que amamos.",
     storyText: "Junto al gran oso y el árbol de Navidad, viviendo la emoción de las fechas especiales. Esas tardes en familia que hoy se convierten en nostalgias preciosas.",
-    defaultSrc: "/photos/11.jpeg",
+    defaultSrc: "./photos/11.jpeg",
     accentColor: "#14b8a6",
     bibleVerse: {
       reference: "Santiago 1:17",
@@ -185,7 +185,7 @@ export const INITIAL_PHOTOS: PhotoItem[] = [
     ageBadge: "Diversión",
     quote: "Ser auténtica es el mayor superpoder que una mujer puede poseer.",
     storyText: "Con tus dos colitas y tu vestido de colores vivos haciendo una pose llena de actitud. Crismeiri siempre con esa chispa única que te hace irrepetible.",
-    defaultSrc: "/photos/12.jpeg",
+    defaultSrc: "./photos/12.jpeg",
     accentColor: "#ec4899",
     bibleVerse: {
       reference: "1 Timoteo 4:12",
@@ -201,7 +201,7 @@ export const INITIAL_PHOTOS: PhotoItem[] = [
     ageBadge: "Soñando",
     quote: "Quien mira con ojos de ilusión encuentra magia en cada esquina.",
     storyText: "Esa mirada sutil mirando hacia arriba, llena de preguntas hermosas y anhelos gigantescos. Estabas a punto de dar el salto a tu adolescencia.",
-    defaultSrc: "/photos/13.jpeg",
+    defaultSrc: "./photos/13.jpeg",
     accentColor: "#8b5cf6",
     bibleVerse: {
       reference: "Jeremías 29:11",
@@ -217,7 +217,7 @@ export const INITIAL_PHOTOS: PhotoItem[] = [
     ageBadge: "Sol y Mar",
     quote: "Lleva el verano en tu risa y el calor de un abrazo sincero en tus manos.",
     storyText: "Con el azul vibrante de fondo y tu top de boleros rosas, pareces salida de una postal de verano. Tu mirada ya mostraba a la mujer brillante que te estabas haciendo.",
-    defaultSrc: "/photos/14.jpeg",
+    defaultSrc: "./photos/14.jpeg",
     accentColor: "#0ea5e9",
     bibleVerse: {
       reference: "Salmos 121:7-8",
@@ -233,7 +233,7 @@ export const INITIAL_PHOTOS: PhotoItem[] = [
     ageBadge: "Estilo",
     quote: "Crecer no es cambiar quien eres, sino descubrir lo maravillosa que siempre fuiste.",
     storyText: "Sentada con seguridad, tus sandalias blancas y tus leggins de diseño. Con calma y confianza, dando zancadas firmes hacia tus mejores años.",
-    defaultSrc: "/photos/15.jpeg",
+    defaultSrc: "./photos/15.jpeg",
     accentColor: "#f43f5e",
     bibleVerse: {
       reference: "Proverbios 3:5-6",
@@ -249,7 +249,7 @@ export const INITIAL_PHOTOS: PhotoItem[] = [
     ageBadge: "Juventud",
     quote: "La verdadera belleza nace de la sencillez y la confianza en uno mismo.",
     storyText: "Pantalones palazzo azul cielo y top blanco. Una presencia alta, estilizada y sofisticada. Ya no eras la niña pequeña: eras una joven admirable y con una vibra espectacular.",
-    defaultSrc: "/photos/16.jpeg",
+    defaultSrc: "./photos/16.jpeg",
     accentColor: "#3b82f6",
     bibleVerse: {
       reference: "Salmos 144:12",
@@ -265,7 +265,7 @@ export const INITIAL_PHOTOS: PhotoItem[] = [
     ageBadge: "Sencillez",
     quote: "En la calma de tu sonrisa encontramos la paz del mundo entero.",
     storyText: "Camisa anudada a la cintura, jeans clásicos y la pared de casa. Esa combinación perfecta de madurez, dulzura y tranquilidad que cautiva a quien te conoce.",
-    defaultSrc: "/photos/17.jpeg",
+    defaultSrc: "./photos/17.jpeg",
     accentColor: "#f59e0b",
     bibleVerse: {
       reference: "Isaías 40:31",
@@ -281,7 +281,7 @@ export const INITIAL_PHOTOS: PhotoItem[] = [
     ageBadge: "Caribe",
     quote: "Sé como el mar: profunda, misteriosa y con un brillo infinito bajo el sol.",
     storyText: "Descalza sobre la arena blanca, con las olas acariciando tus pies y un cielo azul infinito. Esta foto refleja tu libertad, tu paz interior y tus horizontes sin límites.",
-    defaultSrc: "/photos/18.jpeg",
+    defaultSrc: "./photos/18.jpeg",
     accentColor: "#06b6d4",
     bibleVerse: {
       reference: "Salmos 107:29-30",
@@ -297,7 +297,7 @@ export const INITIAL_PHOTOS: PhotoItem[] = [
     ageBadge: "Mis 15",
     quote: "Dejaste atrás la infancia para florecer como la reina de tu propio destino.",
     storyText: "Ese vestido lila violeta con encajes bordados y ese ramo de rosas blancas. Parecías una princesa real salida de un sueño. Un momento que marcó un antes y un después en tu vida.",
-    defaultSrc: "/photos/19.jpeg",
+    defaultSrc: "./photos/19.jpeg",
     accentColor: "#a855f7",
     bibleVerse: {
       reference: "Proverbios 31:30 & Ester 4:14",
@@ -313,7 +313,7 @@ export const INITIAL_PHOTOS: PhotoItem[] = [
     ageBadge: "Sweet 16",
     quote: "Hoy cumples 16 años, y el mundo entero tiene el privilegio de verte brillar.",
     storyText: "Con tu corona reluciente, tu sonrisa radiante y todo un universo de oportunidades esperando por ti. Que estos 16 años te traigan bendiciones, amor incondicional, salud, risas y la certeza de que eres una amiga invaluable e irrepetible. ¡Felicidades Crismeiri!",
-    defaultSrc: "/photos/20.jpeg",
+    defaultSrc: "./photos/20.jpeg",
     accentColor: "#ec4899",
     bibleVerse: {
       reference: "Números 6:24-26",

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Play, Sparkles, Filter, X, ChevronRight, Heart, BookOpen } from 'lucide-react';
 import { PhotoItem } from '../types';
+import { getPhotoUrl } from '../utils/photoUtils';
 
 interface GalleryViewProps {
   photos: PhotoItem[];
@@ -89,7 +90,7 @@ export const GalleryView: React.FC<GalleryViewProps> = ({
               onClick={() => setActiveModalPhoto(photo)}
             >
               <img
-                src={photo.customSrc || photo.defaultSrc}
+                src={getPhotoUrl(photo)}
                 alt={photo.title}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 referrerPolicy="no-referrer"
@@ -154,7 +155,7 @@ export const GalleryView: React.FC<GalleryViewProps> = ({
               {/* Image Preview */}
               <div className="relative w-full aspect-[4/5] max-h-[48vh] bg-black overflow-hidden">
                 <img
-                  src={activeModalPhoto.customSrc || activeModalPhoto.defaultSrc}
+                  src={getPhotoUrl(activeModalPhoto)}
                   alt={activeModalPhoto.title}
                   className="w-full h-full object-contain"
                   referrerPolicy="no-referrer"

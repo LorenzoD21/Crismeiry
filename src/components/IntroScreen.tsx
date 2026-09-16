@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Sparkles, Music, Heart, Play, BookOpen } from 'lucide-react';
 import { PhotoItem } from '../types';
+import { getPhotoUrl } from '../utils/photoUtils';
 
 interface IntroScreenProps {
   onStart: () => void;
@@ -74,7 +75,7 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({ onStart, featuredPhoto
           <div className="w-36 h-36 sm:w-48 sm:h-48 rounded-full p-1 bg-gradient-to-tr from-pink-500 via-purple-500 to-amber-300 shadow-2xl shadow-pink-500/30">
             <div className="w-full h-full rounded-full overflow-hidden bg-zinc-900 relative">
               <img
-                src={featuredPhoto.customSrc || featuredPhoto.defaultSrc}
+                src={getPhotoUrl(featuredPhoto)}
                 alt="Crismeiri"
                 className="w-full h-full object-cover object-center"
                 referrerPolicy="no-referrer"
