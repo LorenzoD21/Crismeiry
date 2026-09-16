@@ -10,7 +10,7 @@ import { PhotoManagerModal } from './components/PhotoManagerModal';
 import { IOSNavbar } from './components/IOSNavbar';
 import confetti from 'canvas-confetti';
 
-const STORAGE_KEY = 'crismeiri_16th_photos_v2';
+const STORAGE_KEY = 'crismeiri_16th_photos_v3';
 
 export default function App() {
   const [hasStarted, setHasStarted] = useState<boolean>(false);
@@ -24,7 +24,11 @@ export default function App() {
       if (saved) {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length === INITIAL_PHOTOS.length) {
-          return parsed;
+          return parsed.map((p, i) => ({
+            ...INITIAL_PHOTOS[i],
+            ...p,
+            bibleVerse: INITIAL_PHOTOS[i].bibleVerse
+          }));
         }
       }
     } catch {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Sparkles, Heart, Cake, Gift, Copy, Check, Send, Flame } from 'lucide-react';
-import { BIRTHDAY_LETTER_TEXT } from '../data/photosData';
+import { Sparkles, Heart, Cake, Gift, Copy, Check, Send, Flame, BookOpen } from 'lucide-react';
+import { BIRTHDAY_LETTER_TEXT, BIBLICAL_PROMISES_16 } from '../data/photosData';
 import confetti from 'canvas-confetti';
 
 interface BirthdayLetterProps {
@@ -14,13 +14,13 @@ export const BirthdayLetter: React.FC<BirthdayLetterProps> = ({ onBackToStory })
   const [copiedLink, setCopiedLink] = useState<boolean>(false);
   const [customWishes, setCustomWishes] = useState<string[]>([]);
   const [newWish, setNewWish] = useState<string>('');
+  const [blessedVerses, setBlessedVerses] = useState<number[]>([]);
 
   const blowSingleCandle = (idx: number) => {
     const updated = [...candlesBlown];
     updated[idx] = true;
     setCandlesBlown(updated);
 
-    // If all are out
     if (updated.every(c => c)) {
       triggerAllOut();
     } else {
@@ -39,7 +39,6 @@ export const BirthdayLetter: React.FC<BirthdayLetterProps> = ({ onBackToStory })
 
   const triggerAllOut = () => {
     setAllCandlesOut(true);
-    // Multiple celebratory confetti bursts!
     const count = 200;
     const defaults = { origin: { y: 0.7 } };
 
@@ -74,19 +73,34 @@ export const BirthdayLetter: React.FC<BirthdayLetterProps> = ({ onBackToStory })
     confetti({ particleCount: 30, spread: 50 });
   };
 
+  const handleClaimBlessing = (idx: number) => {
+    if (!blessedVerses.includes(idx)) {
+      setBlessedVerses(prev => [...prev, idx]);
+    }
+    confetti({
+      particleCount: 50,
+      spread: 70,
+      colors: ['#fbbf24', '#f59e0b', '#ec4899', '#ffffff'],
+      origin: { y: 0.6 }
+    });
+    if (navigator.vibrate) {
+      navigator.vibrate(40);
+    }
+  };
+
   return (
-    <div className="w-full h-full overflow-y-auto no-scrollbar pb-32 pt-4 px-4 max-w-2xl mx-auto select-none">
+    <div className="w-full h-full overflow-y-auto no-scrollbar pb-32 pt-3 px-3 sm:px-4 max-w-2xl mx-auto select-none">
       {/* Celebration Header */}
       <motion.div 
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-center mb-8"
+        className="text-center mb-6"
       >
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full ios-glass-pill text-xs font-semibold text-pink-300 mb-3">
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full ios-glass-pill text-xs font-semibold text-pink-300 mb-2">
           <Gift size={14} className="text-pink-400" />
           <span>CELEBRACIÓN ESPECIAL</span>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight mb-2 text-glow">
+        <h1 className="text-2xl sm:text-4xl font-display font-bold text-white tracking-tight mb-1 text-glow">
           ¡Felices 16 Años, Crismeiri! 🎂
         </h1>
         <p className="text-zinc-400 text-xs sm:text-sm font-sans max-w-md mx-auto">
@@ -99,20 +113,20 @@ export const BirthdayLetter: React.FC<BirthdayLetterProps> = ({ onBackToStory })
         initial={{ opacity: 0, scale: 0.96 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.2 }}
-        className="w-full rounded-3xl ios-glass p-5 sm:p-6 mb-8 border border-white/15 text-center shadow-2xl relative overflow-hidden"
+        className="w-full rounded-3xl ios-glass p-4 sm:p-6 mb-6 border border-white/15 text-center shadow-2xl relative overflow-hidden"
       >
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center justify-between mb-3">
           <span className="text-xs font-mono font-medium text-pink-300 flex items-center gap-1.5">
             <Cake size={15} />
             Pastel Virtual de los 16
           </span>
-          <span className="text-[11px] text-white/60 bg-white/10 px-2 py-0.5 rounded-full">
-            Toca las velas para apagarlas
+          <span className="text-[11px] text-white/70 bg-white/10 px-2 py-0.5 rounded-full font-mono">
+            Toca las velas
           </span>
         </div>
 
         {/* 16 Glowing Candles Row */}
-        <div className="flex items-end justify-center gap-2 sm:gap-3 my-6 py-2 px-2 overflow-x-auto no-scrollbar">
+        <div className="flex items-end justify-center gap-1.5 sm:gap-2.5 my-5 py-2 px-1 overflow-x-auto no-scrollbar">
           {candlesBlown.map((isBlown, idx) => (
             <button
               key={idx}
@@ -121,7 +135,7 @@ export const BirthdayLetter: React.FC<BirthdayLetterProps> = ({ onBackToStory })
               title={`Vela #${idx + 1}`}
             >
               {/* Flame */}
-              <div className="h-5 flex items-center justify-center">
+              <div className="h-4 sm:h-5 flex items-center justify-center">
                 {!isBlown ? (
                   <motion.div
                     animate={{
@@ -133,7 +147,7 @@ export const BirthdayLetter: React.FC<BirthdayLetterProps> = ({ onBackToStory })
                       repeat: Infinity,
                       ease: 'easeInOut'
                     }}
-                    className="w-3 h-4 rounded-full bg-gradient-to-t from-amber-500 via-orange-400 to-yellow-200 shadow-md shadow-amber-400/80"
+                    className="w-2.5 sm:w-3 h-3.5 sm:h-4 rounded-full bg-gradient-to-t from-amber-500 via-orange-400 to-yellow-200 shadow-md shadow-amber-400/80"
                   />
                 ) : (
                   <div className="w-1.5 h-1.5 rounded-full bg-zinc-600 opacity-60" />
@@ -142,11 +156,11 @@ export const BirthdayLetter: React.FC<BirthdayLetterProps> = ({ onBackToStory })
 
               {/* Candle Stick */}
               <div 
-                className={`w-2 sm:w-2.5 h-10 sm:h-12 rounded-t-sm shadow-sm transition-colors ${
+                className={`w-2 sm:w-2.5 h-9 sm:h-12 rounded-t-sm shadow-sm transition-colors ${
                   isBlown ? 'bg-zinc-600' : 'bg-gradient-to-b from-pink-300 via-purple-300 to-indigo-400'
                 }`}
               />
-              <span className="text-[9px] font-mono text-white/50 mt-1">{idx + 1}</span>
+              <span className="text-[8px] sm:text-[9px] font-mono text-white/50 mt-1">{idx + 1}</span>
             </button>
           ))}
         </div>
@@ -155,9 +169,9 @@ export const BirthdayLetter: React.FC<BirthdayLetterProps> = ({ onBackToStory })
         {!allCandlesOut ? (
           <button
             onClick={blowAllCandles}
-            className="py-2.5 px-5 rounded-full bg-gradient-to-r from-amber-400 to-pink-500 text-black font-semibold text-xs sm:text-sm shadow-lg shadow-amber-400/20 active:scale-95 transition-all cursor-pointer flex items-center justify-center gap-2 mx-auto"
+            className="py-2.5 px-5 rounded-full bg-gradient-to-r from-amber-400 via-pink-500 to-purple-500 text-white font-bold text-xs sm:text-sm shadow-lg shadow-amber-400/20 active:scale-95 transition-all cursor-pointer flex items-center justify-center gap-2 mx-auto"
           >
-            <Flame size={16} className="text-red-700 animate-bounce" />
+            <Flame size={16} className="text-yellow-200 animate-bounce" />
             <span>¡Soplar las 16 Velas y Pedir un Deseo! ✨</span>
           </button>
         ) : (
@@ -171,22 +185,87 @@ export const BirthdayLetter: React.FC<BirthdayLetterProps> = ({ onBackToStory })
         )}
       </motion.div>
 
+      {/* Biblical Promises Card for Crismeiri's 16th */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.25 }}
+        className="w-full rounded-3xl bg-gradient-to-b from-amber-500/15 via-zinc-900/80 to-black border border-amber-400/30 p-5 sm:p-6 mb-6 shadow-2xl text-left"
+      >
+        <div className="flex items-center gap-2.5 mb-3">
+          <div className="w-8 h-8 rounded-full bg-amber-500/20 border border-amber-400/40 flex items-center justify-center text-amber-300">
+            <BookOpen size={16} />
+          </div>
+          <div>
+            <span className="text-[10px] font-mono text-amber-400 uppercase tracking-wider font-semibold">
+              Palabra de Bendición
+            </span>
+            <h3 className="text-base sm:text-lg font-bold text-white">
+              Promesas de Dios para tus 16 Años ✨
+            </h3>
+          </div>
+        </div>
+
+        <p className="text-xs text-zinc-300 mb-4 leading-relaxed">
+          Estas palabras están guardadas para tu camino, tus metas y tu corazón:
+        </p>
+
+        <div className="space-y-3">
+          {BIBLICAL_PROMISES_16.map((promise, idx) => {
+            const isClaimed = blessedVerses.includes(idx);
+            return (
+              <div 
+                key={idx}
+                className="p-3 rounded-2xl bg-amber-500/10 border border-amber-400/25 hover:border-amber-400/45 transition-colors"
+              >
+                <div className="flex items-center justify-between mb-1">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-bold text-amber-300 font-serif">
+                      {promise.reference}
+                    </span>
+                    <span className="text-[10px] bg-amber-400/20 text-amber-200 px-1.5 py-0.5 rounded font-mono">
+                      {promise.tag}
+                    </span>
+                  </div>
+                  <button
+                    onClick={() => handleClaimBlessing(idx)}
+                    className={`text-[10px] px-2.5 py-1 rounded-full font-mono transition-all cursor-pointer ${
+                      isClaimed 
+                        ? 'bg-amber-400 text-black font-bold' 
+                        : 'bg-white/10 text-amber-200 hover:bg-amber-400/30'
+                    }`}
+                  >
+                    {isClaimed ? '✓ Declarado' : 'Reclamar Promesa 🙏'}
+                  </button>
+                </div>
+                <h4 className="text-xs font-semibold text-pink-300 font-sans mb-1">
+                  {promise.title}
+                </h4>
+                <p className="text-xs italic text-amber-100/90 font-serif leading-snug">
+                  "{promise.text}"
+                </p>
+              </div>
+            );
+          })}
+        </div>
+      </motion.div>
+
       {/* The Touching Birthday Letter */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
-        className="w-full rounded-3xl ios-glass p-6 sm:p-8 border border-white/15 shadow-2xl text-left relative mb-8"
+        className="w-full rounded-3xl ios-glass p-5 sm:p-7 border border-white/15 shadow-2xl text-left relative mb-6"
       >
         <div className="absolute top-4 right-5 text-pink-400/30">
-          <Sparkles size={32} />
+          <Sparkles size={30} />
         </div>
 
-        <h2 className="text-xl sm:text-2xl font-handwriting text-pink-400 font-bold mb-4">
+        <h2 className="text-xl sm:text-2xl font-handwriting text-pink-400 font-bold mb-3">
           {BIRTHDAY_LETTER_TEXT.greeting}
         </h2>
 
-        <div className="space-y-4 text-zinc-200 text-sm sm:text-base leading-relaxed font-sans font-normal">
+        <div className="space-y-3.5 text-zinc-200 text-xs sm:text-sm leading-relaxed font-sans font-normal">
           {BIRTHDAY_LETTER_TEXT.paragraphs.map((p, idx) => (
             <p key={idx} className="leading-relaxed">
               {p}
@@ -194,9 +273,9 @@ export const BirthdayLetter: React.FC<BirthdayLetterProps> = ({ onBackToStory })
           ))}
         </div>
 
-        <div className="mt-6 pt-5 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="mt-5 pt-4 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
-            <p className="text-xs text-zinc-400">{BIRTHDAY_LETTER_TEXT.signature}</p>
+            <p className="text-[11px] text-zinc-400">{BIRTHDAY_LETTER_TEXT.signature}</p>
             <p className="text-base font-handwriting text-pink-300 font-bold mt-0.5">
               {BIRTHDAY_LETTER_TEXT.from}
             </p>
@@ -206,7 +285,7 @@ export const BirthdayLetter: React.FC<BirthdayLetterProps> = ({ onBackToStory })
             onClick={onBackToStory}
             className="py-2.5 px-4 rounded-xl bg-white/15 hover:bg-white/20 text-white text-xs font-semibold cursor-pointer active:scale-95 transition-all text-center"
           >
-            ← Volver a los 20 Momentos
+            ← Volver a los 20 Recuerdos
           </button>
         </div>
       </motion.div>
@@ -216,16 +295,16 @@ export const BirthdayLetter: React.FC<BirthdayLetterProps> = ({ onBackToStory })
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
-        className="w-full rounded-2xl ios-glass p-4 border border-white/15 flex flex-col sm:flex-row items-center justify-between gap-3 mb-8"
+        className="w-full rounded-2xl ios-glass p-4 border border-white/15 flex flex-col sm:flex-row items-center justify-between gap-3 mb-6"
       >
         <div className="text-left">
           <p className="text-xs font-semibold text-white">Comparte este regalo con Crismeiri</p>
-          <p className="text-[11px] text-zinc-400">Envíaselo por WhatsApp o Instagram para que vea su página</p>
+          <p className="text-[11px] text-zinc-400">Envíaselo por WhatsApp o Instagram para que disfrute su página</p>
         </div>
 
         <button
           onClick={handleCopyLink}
-          className="w-full sm:w-auto py-2 px-4 rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 text-white text-xs font-semibold flex items-center justify-center gap-2 cursor-pointer active:scale-95 transition-all shadow-md shadow-pink-500/20"
+          className="w-full sm:w-auto py-2.5 px-4 rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 text-white text-xs font-semibold flex items-center justify-center gap-2 cursor-pointer active:scale-95 transition-all shadow-md shadow-pink-500/20"
         >
           {copiedLink ? <Check size={14} className="text-emerald-300" /> : <Copy size={14} />}
           <span>{copiedLink ? "¡Enlace Copiado!" : "Copiar Enlace Especial"}</span>
@@ -237,14 +316,14 @@ export const BirthdayLetter: React.FC<BirthdayLetterProps> = ({ onBackToStory })
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5 }}
-        className="w-full rounded-2xl ios-glass p-5 border border-white/15 text-left mb-6"
+        className="w-full rounded-2xl ios-glass p-4 sm:p-5 border border-white/15 text-left mb-6"
       >
         <h3 className="text-sm font-semibold text-white mb-2 flex items-center gap-2">
           <Heart size={15} className="text-pink-500 fill-pink-500" />
           <span>Dedícale un Deseo a Crismeiri</span>
         </h3>
 
-        <form onSubmit={handleAddWish} className="flex gap-2 mb-4">
+        <form onSubmit={handleAddWish} className="flex gap-2 mb-3">
           <input
             type="text"
             value={newWish}

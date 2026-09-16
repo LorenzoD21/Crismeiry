@@ -1,3 +1,9 @@
+export interface BibleVerseItem {
+  reference: string;
+  text: string;
+  reflection: string;
+}
+
 export interface PhotoItem {
   id: number;
   title: string;
@@ -9,6 +15,7 @@ export interface PhotoItem {
   defaultSrc: string;
   customSrc?: string;
   accentColor: string;
+  bibleVerse: BibleVerseItem;
 }
 
 export type ViewMode = 'story' | 'gallery' | 'letter';
