@@ -1,0 +1,6 @@
+{
+  "name": "Crismeiri - Dulces 16 Años",
+  "description": "Una experiencia interactiva y emotiva estilo TikTok Stories & iOS dedicada a Crismeiri en su cumpleaños número 16 con música y recuerdos.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

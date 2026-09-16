@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .font-display {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+  .font-handwriting {
+    font-family: 'Caveat', cursive;
+  }
+  .font-sans {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+}
+
+/* Smooth Ken Burns cinematic zoom effects */
+@keyframes kenburns-1 {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.08) translate(-1%, -1.5%);
+  }
+  100% {
+    transform: scale(1.15) translate(-2%, -3%);
+  }
+}
+
+@keyframes kenburns-2 {
+  0% {
+    transform: scale(1.15) translate(-2%, 2%);
+  }
+  50% {
+    transform: scale(1.06) translate(1%, 0%);
+  }
+  100% {
+    transform: scale(1) translate(0, 0);
+  }
+}
+
+@keyframes float-heart {
+  0% {
+    transform: translateY(0) scale(0.6) rotate(0deg);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(-80px) scale(1.1) rotate(12deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-180px) scale(1.4) rotate(-15deg);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+.animate-kenburns-1 {
+  animation: kenburns-1 12s ease-out infinite alternate;
+}
+
+.animate-kenburns-2 {
+  animation: kenburns-2 12s ease-out infinite alternate;
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2s ease-in-out infinite;
+}
+
+/* Glassmorphic iOS styling */
+.ios-glass {
+  background: rgba(18, 18, 22, 0.72);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.ios-glass-pill {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.text-glow {
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.text-glow-accent {
+  text-shadow: 0 0 24px rgba(236, 72, 153, 0.6), 0 2px 10px rgba(0, 0, 0, 0.9);
+}
+
+/* Hide scrollbars for story reels */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
